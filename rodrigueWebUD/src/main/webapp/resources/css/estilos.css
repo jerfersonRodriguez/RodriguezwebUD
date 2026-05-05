@@ -136,7 +136,7 @@ ul li {
     transition: 0.3s;
 }
 
-/* Enlace */
+
 ul li a {
     display: block;
     padding: 15px;
@@ -146,7 +146,7 @@ ul li a {
     text-align: center;
 }
 
-/* Hover bonito */
+
 ul li:hover {
     transform: scale(1.05);
     background: #f0f8ff;
@@ -157,4 +157,114 @@ footer {
     text-align: center;
     color: white;
     margin-top: 50px;
+}
+
+/* Fondo general */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    margin: 0;
+    padding: 0;
+}
+
+/* Formulario */
+.formulario {
+    background: white;
+    width: 450px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+input[type="submit"] {
+    background: #4facfe;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #00c6ff;
+}
+
+/* RESULTADOS */
+.resultado {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f5faff;
+    border-left: 5px solid #4facfe;
+}
+
+.resultado h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+footer a {
+    color: yellow;
+    text-decoration: none;
+}
+
+
+.mensaje-error {
+    width: 450px;
+    margin: 15px auto;
+    padding: 12px;
+    border-radius: 10px;
+    background: #ffe6e6;
+    color: #b30000;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.error-campo::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #ffe6e6 transparent;
+}
+.campo {
+    margin-bottom: 15px;
+}
+
+.error-campo {
+    display: block;
+    margin-top: 5px;
+    padding: 6px;
+    background: #ffe6e6;
+    color: #b30000;
+    border-radius: 6px;
+    font-size: 13px;
 }
