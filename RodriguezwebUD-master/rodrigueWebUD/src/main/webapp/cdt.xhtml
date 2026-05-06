@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Simulador CDT</title>
+
+  
+    <h:outputStylesheet name="css/estilos.css"/>
+</h:head>
+
+<h:body>
+	
+    <h:form styleClass="formulario">
+
+        
+        <h:messages globalOnly="true" styleClass="mensaje-error"/>
+
+        <h2>Simulador CDT</h2>
+
+           <h:outputLabel for="inversion" value="Inversión:" />
+    <h:inputText id="inversion" value="#{cdt.inversion}" required="true"
+                 requiredMessage="Ingrese la inversión"/>
+    <h:message for="inversion" styleClass="error-campo"/>
+        
+
+    <h:outputLabel for="interes" value="Interés (% E.A.):" />
+    <h:inputText id="interes" value="#{cdt.interes}" required="true"
+                 requiredMessage="Ingrese el interés"/>
+    <h:message for="interes" styleClass="error-campo"/>
+
+    <h:outputLabel for="plazo" value="Plazo (días):" />
+    <h:inputText id="plazo" value="#{cdt.plazo}" required="true"
+                 requiredMessage="Ingrese el plazo"/>
+    <h:message for="plazo" styleClass="error-campo"/>
+
+    <h:commandButton value="Calcular Ganancia" action="#{cdt.calcular}">
+        <f:ajax execute="@form" render="@form"/>
+    </h:commandButton>
+
+       
+        <h:panelGroup layout="block" styleClass="resultado" rendered="#{cdt.ganancia > 0}">
+
+            <h3>Resultados</h3>
+
+            <p>
+                <strong>Ganancia:</strong>
+                <h:outputText value="#{cdt.ganancia}">
+                    <f:convertNumber type="currency" currencySymbol="$"/>
+                </h:outputText>
+            </p>
+
+            <p>
+                <strong>Valor final:</strong>
+                <h:outputText value="#{cdt.valorFuturo - cdt.impuesto}">
+                    <f:convertNumber type="currency" currencySymbol="$"/>
+                </h:outputText>
+            </p>
+
+            <p>
+                <strong>Impuesto (4%):</strong>
+                <h:outputText value="#{cdt.impuesto}">
+                    <f:convertNumber type="currency" currencySymbol="$"/>
+                </h:outputText>
+            </p>
+
+            <p>
+                <strong>Ganancia neta:</strong>
+                <h:outputText value="#{cdt.ganancia - cdt.impuesto}">
+                    <f:convertNumber type="currency" currencySymbol="$"/>
+                </h:outputText>
+            </p>
+
+        </h:panelGroup>
+
+    </h:form>
+
+    <footer>
+        <a href="index.xhtml">Inicio</a>
+        <br/><br/>
+        <h4>
+            ESTUDIANTE: Jerferson David Rodríguez Guarnizo<br/>
+            2026 - Programación
+        </h4>
+    </footer>
+
+</h:body>
+</html>
