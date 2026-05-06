@@ -1,6 +1,0 @@
-/bin/
-/target/
-*.class
-.settings/
-.project
-.classpath
