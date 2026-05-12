@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Nómina</title>
+
+<style>
+
+body{
+background:linear-gradient(135deg,#6dd5ed,#2193b0);
+font-family:Arial;
+}
+
+.panelCentro{
+width:450px;
+margin:auto;
+margin-top:40px;
+}
+
+.tabla{
+width:800px;
+margin:auto;
+margin-top:40px;
+}
+
+</style>
+
+</h:head>
+
+<h:body>
+
+<h:form>
+
+<p:growl id="mensajes" showDetail="true"/>
+
+<div class="panelCentro">
+
+<p:panel header="Registro de Empleados">
+
+<p:panelGrid columns="2" style="width:400px">
+
+<p:outputLabel value="Nombre"/>
+<p:inputText 
+value="#{empleadoBean.empleado.nombre}" 
+required="true"
+requiredMessage="Debe ingresar el nombre"/>
+
+<p:outputLabel value="Identificación"/>
+<p:inputText 
+value="#{empleadoBean.empleado.identificacion}" 
+required="true"
+requiredMessage="Debe ingresar la identificación"/>
+
+<p:outputLabel value="Salario"/>
+
+<p:selectOneMenu value="#{empleadoBean.empleado.salario}">
+
+<f:selectItem itemLabel="Seleccione salario" itemValue="0"/>
+
+<f:selectItem itemLabel="1.300.000" itemValue="1300000"/>
+<f:selectItem itemLabel="2.000.000" itemValue="2000000"/>
+<f:selectItem itemLabel="3.000.000" itemValue="3000000"/>
+<f:selectItem itemLabel="5.000.000" itemValue="5000000"/>
+
+</p:selectOneMenu>
+
+</p:panelGrid>
+
+<br/>
+
+<p:commandButton 
+value="Agregar" 
+icon="pi pi-check"
+action="#{empleadoBean.agregarEmpleado}"
+update="tabla mensajes"/>
+
+</p:panel>
+
+</div>
+
+<br/>
+
+<div class="tabla">
+
+<p:dataTable id="tabla"
+value="#{empleadoBean.lista}"
+var="emp"
+paginator="true"
+rows="5">
+
+<p:column headerText="Nombre">
+#{emp.nombre}
+</p:column>
+
+<p:column headerText="Identificación">
+#{emp.identificacion}
+</p:column>
+
+<p:column headerText="Salario">
+#{emp.salario}
+</p:column>
+
+<p:column headerText="Salud (4%)">
+#{emp.salud}
+</p:column>
+
+<p:column headerText="Pensión (4%)">
+#{emp.pension}
+</p:column>
+
+<p:column headerText="Salario Neto">
+#{emp.salarioNeto}
+</p:column>
+
+<p:column headerText="Eliminar">
+
+<p:commandButton 
+icon="pi pi-trash"
+styleClass="ui-button-danger"
+action="#{empleadoBean.eliminarEmpleado(emp)}"
+update="tabla"/>
+
+</p:column>
+
+</p:dataTable>
+
+</div>
+
+</h:form>
+
+</h:body>
+</html>
